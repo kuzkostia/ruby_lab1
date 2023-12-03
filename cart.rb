@@ -13,14 +13,28 @@ class Cart
   end
 
   def save_to_file(filename, format = :json)
-    
+    case format
+    when :json
+      save_to_json(filename)
+    when :csv
+      save_to_csv(filename)
+    else
+      puts "Wrong format for saving: #{format}"
+    end
   end
 
   def save_to_json(filename)
-
+    File.open(filename + '.json','w') do |file|
+      file.write(JSON.generate(@items.map(&:to_h)))
+    end
   end
 
   def save_to_csv(filename)
-
+    CSV.open(filename + '.csv', 'w') do |csv|
+      csv << %w[Name Type Price Shop Quantity]
+      @items.each do |item|
+        csv << [item[:product].name, item[:product].type, item[:product].price, item[:product].old_price, item[:quantity]]
+      end
+    end
   end
 end
