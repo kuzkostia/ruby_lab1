@@ -1,4 +1,5 @@
 module ItemContainer
+  include Enumerable
   module ClassMethods
     def total_price(cart)
       cart.total_price = 0.0

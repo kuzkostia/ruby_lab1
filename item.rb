@@ -14,6 +14,10 @@ class Item
     end
   end
 
+  def <=>(other_item)
+    self.price <=> other_item.price
+  end
+
   
   def to_s
     "Item: #{@name}, Type: #{@type}, Price: #{@price}, Old price: #{@old_price}, Is available: #{@availability}"
