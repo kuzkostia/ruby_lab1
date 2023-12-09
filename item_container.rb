@@ -3,7 +3,7 @@ module ItemContainer
     def total_price(cart)
       cart.total_price = 0.0
       cart.items.each do |item|
-        price = item[:product].price.to_s.tr(' ','').tr('₴','')
+        price = item[:product].price.to_s.tr(' ','').tr('грн.','')
         cart.total_price += price.to_f * item[:quantity]
       end
     end

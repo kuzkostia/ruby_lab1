@@ -11,8 +11,9 @@ class Parser
 
   def parse_item(selection_condition, value_regex = /./, attribute_selectors = {})
     html = Nokogiri::HTML(URI.open(@url))
-    #gallery_items = html.css('[class="product_block"]')
-    #item_type = html.at_css('ol[class="breadcrumbs_seo"] li[class="breadcrumbs_seo_item"]:last-child')&.text&.strip
+
+    gallery_items = html.css('[class="TileBlockstyled__StyledTileBlock-sc-ogrpyx-3 bwJliX OfferTilestyled__StyledTileBlock-sc-1lnuwp1-0 jUUHxV"]')
+    item_type = html.at_css('[itemprop="name"]')&.text&.strip
 
     items = []
 
@@ -25,15 +26,19 @@ class Parser
         item_data[attribute] = product_block.at_css(selector)&.text&.strip
       end
 
+      #puts attribute_selectors
+
       item_data[:availability] = get_availability_value(item_data[:availability])
 
       items << Item.new(item_data[:name], item_type, item_data[:price], item_data[:old_price], item_data[:availability])
-  
     end
+
     items
   end
+
+
   def get_availability_value(availability)
-    availability == 'Готовий до відправлення' ? true : false
+    availability == 'В наявності' ? true : false
   end
 
 end

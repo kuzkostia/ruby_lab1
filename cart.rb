@@ -31,7 +31,7 @@ class Cart
 
   def save_to_csv(filename)
     CSV.open(filename + '.csv', 'w') do |csv|
-      csv << %w[Name Type Price Shop Quantity]
+      csv << %w[Name Type Price Old Price Quantity]
       @items.each do |item|
         csv << [item[:product].name, item[:product].type, item[:product].price, item[:product].old_price, item[:quantity]]
       end

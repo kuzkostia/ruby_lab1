@@ -11,3 +11,13 @@ end
 
 Cart.total_price(cart)
 puts "Cart price:#{cart.total_price}"
+# cart.remove_item(cart.items[3])
+# Cart.total_price(cart)
+# puts "Cart price:#{cart.total_price}"
+# cart.show_all_items
+# cart.remove_item(cart.items[2])
+cart.save_to_file('new_json_file', :json)
+cart.save_to_file('new_csv_file', :csv)
+# Cart.total_price(cart)
+# puts "Cart price:#{cart.total_price}"
+# cart.delete_items
