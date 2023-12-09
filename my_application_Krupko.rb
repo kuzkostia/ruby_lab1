@@ -1,4 +1,4 @@
-module MyApplicationKuz
+module MyApplicationKrupko
     require_relative 'main_application.rb'
     require_relative 'libs.rb'
   
