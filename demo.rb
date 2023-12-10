@@ -18,6 +18,7 @@ puts "Cart price:#{cart.total_price}"
 # cart.remove_item(cart.items[2])
 cart.save_to_file('new_json_file', :json)
 cart.save_to_file('new_csv_file', :csv)
+cart.save_to_file('new_yaml_file', :yaml)
 # Cart.total_price(cart)
 # puts "Cart price:#{cart.total_price}"
 # cart.delete_items

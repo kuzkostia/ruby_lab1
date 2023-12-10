@@ -1,5 +1,6 @@
 require 'csv'
 require 'json'
+require 'yaml'
 require_relative 'item_container'
 
 class Cart
@@ -46,7 +47,8 @@ class Cart
       total_items: self.items.length
     }
 
-    File.open(filename, 'w') do |file|
-      file.write(data.to_yaml)
+    File.open(filename +'.yaml', 'w') do |file|
+      file.write(data,file)
+    end
     end
 end
